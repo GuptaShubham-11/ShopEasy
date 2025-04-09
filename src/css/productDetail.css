@@ -105,6 +105,31 @@
     animation: fadeInOut 2s ease forwards;
 }
 
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0.6rem 0;
+    color: #fbbf24;
+}
+
+.product-rating .star {
+    color: #ccc;
+}
+
+.product-rating .star.filled {
+    color: #fbbf24;
+    fill: #fbbf24;
+}
+
+.rating-value {
+    margin-left: 0.5rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+
 @keyframes fadeInOut {
     0% {
         opacity: 0;

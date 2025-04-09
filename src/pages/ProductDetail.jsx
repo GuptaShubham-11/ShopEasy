@@ -2,7 +2,7 @@ import { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { CartContext } from '../context/CartContext';
 import '../css/productDetail.css';
-import { ArrowLeft, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, CheckCircle2, Star, StarOff } from 'lucide-react';
 
 const ProductDetail = () => {
     const { id } = useParams();
@@ -52,6 +52,22 @@ const ProductDetail = () => {
                 <div className="product-detail-info">
                     <h2>{product.title}</h2>
                     <p className="product-detail-category">Category: {product.category}</p>
+
+                    {/* Rating */}
+                    <div className="product-rating">
+                        {Array.from({ length: 5 }, (_, index) => {
+                            const filled = index < Math.round(product.rating.rate);
+                            return filled ? (
+                                <Star key={index} size={18} className="star filled" />
+                            ) : (
+                                <StarOff key={index} size={18} className="star" />
+                            );
+                        })}
+                        <span className="rating-value">
+                            {product.rating.rate} / 5 ({product.rating.count})
+                        </span>
+                    </div>
+
                     <p className="product-detail-description">{product.description}</p>
                     <h3 className="product-price">${product.price}</h3>
                     <button className="add-to-cart-btn" onClick={handleAddToCart}>
